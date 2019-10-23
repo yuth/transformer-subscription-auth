@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "subsauth",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authissue2512a0241625",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

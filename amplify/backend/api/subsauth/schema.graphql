@@ -1,0 +1,17 @@
+type Group @model(subscriptions: { level: off}) {
+    id: ID!
+    # Store the username of the members.
+    # Using a @connection scales well as the data gets stored in a separate Dynamo table
+    # and scales well if a group has a lot of memebers
+    members: [String!]
+}
+
+type Message @model(subscriptions: { level: off}) {
+    id: ID!
+    message: String!
+    group: Group @connection
+}
+
+type Subscription {
+    onNewMessage(groupId: ID!): Message @aws_subscribe(mutations: ["createMessage"])
+}
