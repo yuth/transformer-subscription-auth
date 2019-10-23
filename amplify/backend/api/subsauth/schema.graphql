@@ -13,5 +13,5 @@ type Message @model(subscriptions: { level: off}) {
 }
 
 type Subscription {
-    onNewMessage(groupId: ID!): Message @aws_subscribe(mutations: ["createMessage"])
+    onNewMessage(messageGroupId: ID!): Message @aws_subscribe(mutations: ["createMessage"])
 }
